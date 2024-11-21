@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Correct";
+}
+
+<form asp-action="GetFile" method="get">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control"
+               placeholder="Enter path file"
+               name="input">
+        <input type="hidden" name="checkPath" value="true">
+        <button class="btn btn-primary">Ping</button>
+    </div>
+</form>
+

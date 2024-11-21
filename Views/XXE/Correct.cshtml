@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Incorrect";
+}
+
+<form asp-action="LoadXml" method="post">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control"
+               placeholder="Write xml file here"
+               name="xml">
+        <input type="hidden" name="safe" value="true"/>
+        <button class="btn btn-primary">Send xml</button>
+    </div>
+</form>
