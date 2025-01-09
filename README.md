@@ -2,7 +2,7 @@
 
 > ### Get the IP address of the machine
 > ```cmd
->     pconfig | findstr /R /C:"IPv4 Address" 
+>     ipconfig | findstr /R /C:"IPv4 Address" 
 > ```
 
 
@@ -13,16 +13,16 @@
 
 # 2. Path traversal for flag access
 
+> ### Incorrect
+>
+> ```text
+>     ../Aleksandar/info.txt
+> ```
+
 > ### Correct
 >
 > ```text
 >     info.txt
-> ```
-
-> ### Inorrect
->
-> ```text
->     ../Aleksandar/info.txt
 > ```
 
 # 3. Server side request forgery
@@ -35,7 +35,7 @@
 
 # 4. XXE
 
-> ### Correct
+> ### Incorrect
 >
 > ```xml
 > <?xml version="1.0"?>
@@ -43,13 +43,13 @@
 > <!DOCTYPE user [
 >         <!ELEMENT user (info)>
 >         <!ELEMENT info (#PCDATA)>
->         <!ENTITY xxe SYSTEM "file:///C:/Users/kaoko/Documents/Rider/RBS-Practise/WebApplication1/wwwroot/Data/Aleksandar/info.txt">
+>         <!ENTITY xxe SYSTEM "file:///C:/Users/kaoko/Documents/Rider/ImproperInputValidation/wwwroot/Data/Aleksandar/info.txt">
 >         ]>
 > <user>
 >     <info>&xxe;</info>
 > </user>
 
-> ### Inorrect
+> ### Correct
 >
 > ```xml
 > <?xml version="1.0"?>
@@ -65,7 +65,7 @@
 
 # 5. Hard coded input
 
-> ### Inorrect
+> ### Incorrect
 >
 > ```text
 > username: admin

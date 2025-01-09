@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers;
+namespace ImproperInputValidation.Controllers;
 
 public class ServerSideRequestForgery : Controller
 {
-    private string[] _blackList = ["Password"];
+    private readonly string[] _blackList = ["Password"];
 
     public IActionResult Index(bool isCorrect)
     {

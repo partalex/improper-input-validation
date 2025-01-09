@@ -1,8 +1,6 @@
-using System.Diagnostics;
-using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers;
+namespace ImproperInputValidation.Controllers;
 
 public class HomeController : Controller
 {

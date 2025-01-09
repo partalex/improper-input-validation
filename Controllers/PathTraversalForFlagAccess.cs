@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers;
+namespace ImproperInputValidation.Controllers;
 
 public class PathTraversalForFlagAccess : Controller
 {
@@ -11,32 +11,27 @@ public class PathTraversalForFlagAccess : Controller
     }
 
 
-
     [HttpGet]
     public IActionResult GetFile(string input, bool checkPath = false)
     {
-        var defualtPath = "wwwroot/Data/Milena/";
+        const string defualtPath = "wwwroot/Data/Milena/";
         if (checkPath)
         {
-            if (Regex.IsMatch(input, @"^(?!\.\.\/)(\.\/)?(\w+\/)*\w+\.txt$"))
+            if (!Regex.IsMatch(input, @"^(?!\.\.\/)(\.\/)?(\w+\/)*\w+\.txt$")) return Content("Error: Invalid path");
+            try
             {
-                try
-                {
-                    string fileContent = System.IO.File.ReadAllText(defualtPath + input);
-                    return Content(fileContent);
-                }
-                catch (Exception ex)
-                {
-                    return Content("Error: " + ex.Message);
-                }
+                var fileContent = System.IO.File.ReadAllText(defualtPath + input);
+                return Content(fileContent);
             }
-
-            return Content("Error: Invalid path");
+            catch (Exception ex)
+            {
+                return Content("Error: " + ex.Message);
+            }
         }
 
         try
         {
-            string fileContent = System.IO.File.ReadAllText(defualtPath + input);
+            var fileContent = System.IO.File.ReadAllText(defualtPath + input);
             return Content(fileContent);
         }
         catch (Exception ex)

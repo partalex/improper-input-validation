@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers;
+namespace ImproperInputValidation.Controllers;
 
 public class HardCodedInput(IConfiguration configuration) : Controller
 {

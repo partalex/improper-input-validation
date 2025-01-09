@@ -1,6 +1,7 @@
+using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers;
+namespace ImproperInputValidation.Controllers;
 
 public class XXE : Controller
 {
@@ -14,19 +15,21 @@ public class XXE : Controller
     {
         try
         {
-            var settings = new System.Xml.XmlReaderSettings();
-            settings.DtdProcessing = System.Xml.DtdProcessing.Parse;
+            var settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Parse
+            };
             if (!safe)
-                settings.XmlResolver = new System.Xml.XmlUrlResolver();
-            
-            var reader = System.Xml.XmlReader.Create(new System.IO.StringReader(xml), settings);
-            var doc = new System.Xml.XmlDocument();
+                settings.XmlResolver = new XmlUrlResolver();
+
+            var reader = XmlReader.Create(new StringReader(xml), settings);
+            var doc = new XmlDocument();
             doc.Load(reader);
 
             var stringWriter = new StringWriter();
-            var xmlTextWriter = new System.Xml.XmlTextWriter(stringWriter)
+            var xmlTextWriter = new XmlTextWriter(stringWriter)
             {
-                Formatting = System.Xml.Formatting.Indented
+                Formatting = Formatting.Indented
             };
             doc.WriteTo(xmlTextWriter);
 
